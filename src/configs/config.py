@@ -1,4 +1,5 @@
 import os
+import sys
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -13,3 +14,8 @@ WEATHER_REQUEST_TIMEOUT=int(os.getenv("WEATHER_REQUEST_TIMEOUT"))
 PROJECT_ROOT=Path(__file__).parent.parent
 
 PROMPTS_DIR=PROJECT_ROOT/"prompts"
+
+SRC_DIR = PROJECT_ROOT / "src"
+
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))

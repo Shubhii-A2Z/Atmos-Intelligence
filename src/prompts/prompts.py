@@ -1,7 +1,7 @@
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from configs.config import PROMPTS_DIR
-from schemas.schema import tool_catalog
+from ..configs.config import PROMPTS_DIR
+from ..schemas.schema import tool_catalog
 
 
 _env=Environment(
@@ -18,3 +18,6 @@ def render_template(name: str, **context)->str:
 
 def build_system_prompt(*, extra_guidance: str="")->str:
     return render_template("greeting.jinja", tools=tool_catalog, extra_guidance=extra_guidance)
+
+def build_greeting_prompt()->str:
+    return render_template("greeting.jinja")
