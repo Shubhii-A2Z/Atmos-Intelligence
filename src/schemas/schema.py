@@ -23,3 +23,12 @@ lookup_weather_schema={
 TOOL_MENU=[
     lookup_weather_schema
 ]
+
+
+def tool_catalog()->list[dict[str, str]]:
+    return [
+        {
+            "name": schema["function"]["name"],
+            "description": schema["function"]["description"],
+        } for schema in TOOL_MENU
+    ]
