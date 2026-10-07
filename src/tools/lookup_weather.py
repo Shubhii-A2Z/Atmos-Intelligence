@@ -1,15 +1,26 @@
 import requests
 
-from configs.config import FORECAST_URL, GEOCODE_URL, WEATHER_REQUEST_TIMEOUT
+from ..configs.config import FORECAST_URL, GEOCODE_URL, WEATHER_REQUEST_TIMEOUT
 
-WEATHER_CODES: dict[int, str]={
+WEATHER_CODES: dict[int, str] = {
     0: "clear sky",
     1: "mainly clear",
+    2: "partly cloudy",
     3: "overcast",
     45: "fog",
     48: "depositing rime fog",
     51: "light drizzle",
     53: "moderate drizzle",
+    55: "dense drizzle",
+    61: "slight rain",
+    63: "moderate rain",
+    65: "heavy rain",
+    71: "slight snow",
+    73: "moderate snow",
+    75: "heavy snow",
+    80: "rain showers",
+    95: "thunderstorm",
+    96: "thunderstorm with hail",
 }
 
 
@@ -59,5 +70,3 @@ def lookup_weather(location: str)->str:
     wind_note=f", wind {wind_speed} km/h" if wind_speed else ""
     
     return f"The current temperature in {label} is {temperature}°C, the sky is {sky}{wind_note}." 
-
-print(lookup_weather("London"))

@@ -1,9 +1,9 @@
 import json
 
-from client import build_client, select_provider
-from prompts.prompts import build_system_prompt
-from schemas.schema import TOOL_MENU
-from tools._init__ import TOOL_FUNCTIONS
+from .client import build_client, select_provider
+from .prompts.prompts import build_system_prompt
+from .schemas.schema import TOOL_MENU
+from .tools import TOOL_FUNCTIONS
 
 def run_agent_turn(messages: list, max_turns: int=10)-> str:
     provider=select_provider()
@@ -66,7 +66,7 @@ def run_agent_turn(messages: list, max_turns: int=10)-> str:
         
     # This will be triggered if agent loop doesnt end in max_turns
     fallback="Stopped after hitting max_turns without a final answer"
-    
+
     messages.append({
         "role": "assistant",
         "content": fallback
